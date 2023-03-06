@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_03_025152) do
+ActiveRecord::Schema.define(version: 2023_03_06_050606) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2023_03_03_025152) do
   end
 
   create_table "testimonials", force: :cascade do |t|
-    t.string "username"
     t.string "comment"
     t.integer "user_id"
   end

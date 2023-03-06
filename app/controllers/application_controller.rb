@@ -18,13 +18,20 @@ class ApplicationController < Sinatra::Base
 
 
   get '/testimonials' do
-    Testimonial.all.to_json
+    Testimonial.all.to_json(include: :user)
   end
 
   get '/comments' do
     Comment.all.to_json
   end
 
+  get '/usercomments/:user_id' do
+    Comment.where(params).to_json(include: :user)
+  end
+
+  get '/usertestimonials' do
+    Testimonial.where(params).to_json(include: :user)
+  end
 
   get '/comments/:id' do
     Comment.find(params[:id]).to_json
@@ -45,7 +52,7 @@ class ApplicationController < Sinatra::Base
     Comment.find(params[:id]).to_json
   end
 
-  
+
   delete '/comments/:id' do
     Comment.find(params[:id]).destroy.to_json
   end
